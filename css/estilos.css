@@ -35,3 +35,12 @@ p {
     margin: 0 auto;
 }
 
+/* Clase personalizada para tooltips de texto sin recuadro */
+.text-only-tooltip {
+    background-color: transparent;  /* Quitar el fondo */
+    border: none;  /* Quitar el borde */
+    box-shadow: none;  /* Quitar la sombra */
+    color: #000;  /* Cambiar el color del texto si es necesario */
+    font-weight: bold;  /* Hacer el texto más visible */
+}
+

@@ -62,10 +62,25 @@ $.getJSON("datos/municipalidades_si.geojson", function (geodata) {
             var popupText = "<strong>Municipalidad:</strong> " + feature.properties.MUNICIPALIDAD +
                             "<br><strong>Región:</strong> " + feature.properties.REGIÓN;
             layer.bindPopup(popupText);
+
+            layer.bindTooltip(feature.properties.MUNICIPALIDAD, {
+                permanent: true,  
+                direction: "top",  
+                className: "text-only-tooltip"  
+            }).openTooltip();  
         }
     }).addTo(mapa);
 
     control_capas.addOverlay(municipalidades_si, "Municipalidades interesadas");
+});
+
+   // Función para ajustar el tamaño de la letra según el zoom
+   mapa.on('zoomend', function () {
+    var zoom = mapa.getZoom();
+    var fontSize = zoom < 10 ? '10px' : zoom < 13 ? '12px' : '14px';  // Ajuste según el zoom
+
+    // Cambiar el tamaño de la letra de todos los tooltips
+    $('.text-only-tooltip').css('font-size', fontSize);
 });
 
 // Capa de Municipalidades sin interés en formato GeoJSON
