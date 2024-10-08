@@ -84,29 +84,29 @@ $.getJSON("datos/municipalidades_si.geojson", function (geodata) {
 });
 
 // Capa de Municipalidades sin interés en formato GeoJSON
-$.getJSON("datos/municipalidades_no.geojson", function (geodata) {
-    var municipalidades_no = L.geoJson(geodata, {
-        pointToLayer: function (feature, latlng) {
-            var leafIcon = new L.Icon({
-                iconUrl: 'bombillo-rojo.png', 
-                iconSize: [25, 25], // Set a uniform size without incline or shadow
-                iconAnchor: [10, 10], // Adjust icon anchor to be centered
-                popupAnchor: [-3, -10] // Adjust popup anchor to open above the icon
-            });
-            return L.marker(latlng, {icon: leafIcon});
-        },
-        onEachFeature: function (feature, layer) {
-            var popupText = "<strong>Municipalidad</strong>: " +
-                feature.properties.MUNICIPALIDAD +
-                "<br>" +
-                "<strong>Región</strong>: " +
-                feature.properties.REGIÓN;
-            layer.bindPopup(popupText);
-        },
-    }).addTo(mapa);
+//$.getJSON("datos/municipalidades_no.geojson", function (geodata) {
+    //var municipalidades_no = L.geoJson(geodata, {
+        //pointToLayer: function (feature, latlng) {
+            //var leafIcon = new L.Icon({
+                //iconUrl: 'bombillo-rojo.png', 
+                //iconSize: [25, 25], // Set a uniform size without incline or shadow
+                //iconAnchor: [10, 10], // Adjust icon anchor to be centered
+                //popupAnchor: [-3, -10] // Adjust popup anchor to open above the icon
+            //});
+            //return L.marker(latlng, {icon: leafIcon});
+        //},
+        //onEachFeature: function (feature, layer) {
+            //var popupText = "<strong>Municipalidad</strong>: " +
+                //feature.properties.MUNICIPALIDAD +
+                //"<br>" +
+                //"<strong>Región</strong>: " +
+                //feature.properties.REGIÓN;
+            //layer.bindPopup(popupText);
+        //},
+    //}).addTo(mapa);
 
-    control_capas.addOverlay(municipalidades_no, "Municipalidades sin interés");
-});
+    //control_capas.addOverlay(municipalidades_no, "Municipalidades sin interés");
+//});
 
 // Capa de Municipalidades pendientes en formato GeoJSON
 $.getJSON("datos/municipalidades_pendientes.geojson", function (geodata) {
